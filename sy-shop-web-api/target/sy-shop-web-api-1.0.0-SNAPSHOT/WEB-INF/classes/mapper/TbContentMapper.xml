@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.shop.web.api.dao.TbContentDao">
+<sql id="content">
+       a.id,
+         a.title,
+         a.sub_title as subTitle,
+         a.title_desc as titleDesc,
+         a.url,
+         a.pic,
+         a.pic2,
+         a.content,
+         a.created,
+         a.updated,
+         b.id as "parent.id",
+         b.name as "parent.name"
+</sql>
+<sql id="contentJoin">
+      LEFT JOIN tb_content_category AS b ON a.category_id = b.id
+</sql>
+
+<!--查询全部条数-->
+    <select id="classifyById" resultType="TbContent">
+        SELECT
+        <include refid="content"/>
+          FROM  tb_content AS a
+        <include refid="contentJoin"/>
+        WHERE a.category_id = #{categoryId}
+
+
+    </select>
+</mapper>
+
