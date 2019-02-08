@@ -8,7 +8,7 @@
 
     <title>我的商城 | 分类管理</title>
     <jsp:include page="../includes/header.jsp"/>
-<link rel="stylesheet" href="/static/plugins/treeTable/themes/vsStyle/treeTable.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/treeTable/themes/vsStyle/treeTable.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -55,7 +55,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12" style="padding-left: 25px">
-                                <a href="/category/form" type="button" class="btn btn-sm btn-default"><i
+                                <a href="${pageContext.request.contextPath}/category/form" type="button" class="btn btn-sm btn-default"><i
                                         class="fa fa-plus"></i> 新增</a>&nbsp;&nbsp;
                                 <a type="button" class="btn btn-sm btn-default"><i class="fa fa-download"></i> 导入</a>&nbsp;&nbsp;
                                 <a type="button" class="btn btn-sm btn-default"><i class="fa fa-upload"></i> 导出</a>
@@ -86,9 +86,9 @@
                                             <td><fmt:formatDate value="${cc.created}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                             <td><fmt:formatDate value="${cc.updated}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                             <td><button type="button" onclick="App.checkdatitl(${cc.id})" class="btn btn-sm btn-default"><i class="fa fa-search"></i>查看</button>
-                                                &nbsp&nbsp<a href="/category/form?id=${cc.id}" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>
+                                                &nbsp&nbsp<a href="${pageContext.request.contextPath}/category/form?id=${cc.id}" type="button" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i>编辑</a>
                                                 &nbsp&nbsp<button type="button" onclick="App.checkdelet(${cc.id})"  class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>删除</button>
-                                                &nbsp&nbsp<a href="/category/form?parent.id=${cc.id}&parent.name=${cc.name}"  type="button" onclick="checkdelet(${cc.id})" class="btn btn-sm"><i class="fa fa-plus"></i>新增下一级分类</a></td>
+                                                &nbsp&nbsp<a href="${pageContext.request.contextPath}/category/form?parent.id=${cc.id}&parent.name=${cc.name}"  type="button" onclick="checkdelet(${cc.id})" class="btn btn-sm"><i class="fa fa-plus"></i>新增下一级分类</a></td>
                                         </tr>
 
                                     </c:forEach>
@@ -117,8 +117,8 @@
 
 
 <jsp:include page="../includes/footer.jsp"/>
-<script src="/static/plugins/treeTable/jquery.treeTable.js"></script>
-<script src="/static/js/app/App.js"></script>
+<script src="${pageContext.request.contextPath}/static/plugins/treeTable/jquery.treeTable.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/app/App.js"></script>
 <script>
     App.treeTable()
     function btnModalClick(){

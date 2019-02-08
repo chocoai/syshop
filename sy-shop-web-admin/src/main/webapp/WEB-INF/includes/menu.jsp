@@ -16,7 +16,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="/static/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="${pageContext.request.contextPath}/static/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p>${user.username}</p>
@@ -35,8 +35,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="/user/list"><i class="fa fa-user"></i> 用户列表</a></li>
-                    <li class="active"><a href="/user/form"><i class="fa fa-user-plus"></i> 新增用户</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/user/list"><i class="fa fa-user"></i> 用户列表</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/user/form"><i class="fa fa-user-plus"></i> 新增用户</a></li>
                 </ul>
             </li>
             <li class="treeview /category">
@@ -47,8 +47,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="/category/lists"><i class="fa"></i> 分类列表</a></li>
-                    <li class="active  fa-edit"><a href="/category/form"><i class="fa"></i>添加分类</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/category/lists"><i class="fa"></i> 分类列表</a></li>
+                    <li class="active  fa-edit"><a href="${pageContext.request.contextPath}/category/form"><i class="fa"></i>添加分类</a></li>
                 </ul>
             </li>
             <li class="treeview /content">
@@ -59,8 +59,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="/content/lists"><i class="fa"></i>查看信息</a></li>
-                    <li class="active  fa-edit"><a href="/content/form"><i class="fa"></i>添加信息</a></li>
+                    <li class="active"><a href="${pageContext.request.contextPath}/content/lists"><i class="fa"></i>查看信息</a></li>
+                    <li class="active  fa-edit"><a href="${pageContext.request.contextPath}/content/form"><i class="fa"></i>添加信息</a></li>
                 </ul>
             </li>
             <li class="treeview">

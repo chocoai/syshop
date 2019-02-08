@@ -1776,7 +1776,6 @@ margin-right: 24px;
     margin-right: 8px;
     font: 18px/22px 'Microsoft Yahei';
     color: #fff;
-    height: 24px;
     background-color: #e3101e;
     border: solid 1px #e3101e;
 }
@@ -6891,7 +6890,7 @@ input.search-btn {
     position: relative;
     overflow: hidden;
 }
-.tij_dingd_ann a {
+.tij_dingd_ann input {
     float: right;
     position: relative;
     width: 135px;

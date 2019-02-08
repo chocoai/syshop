@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <header class="main-header">
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="#" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini">商城</span>
         <!-- logo for regular state and mobile devices -->
@@ -28,13 +28,13 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="/static/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                        <img src="${pageContext.request.contextPath}/static/img/user2-160x160.jpg" class="user-image" alt="User Image">
                         <span class="hidden-xs">${user.username}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="/static/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="${pageContext.request.contextPath}/static/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                             <p>
                                 ${user.username} - Java Developer
@@ -48,7 +48,7 @@
                                 <a href="#" class="btn btn-default btn-flat">详情</a>
                             </div>
                             <div class="pull-right">
-                                <a href="/logout" class="btn btn-default btn-flat">注销</a>
+                                <a href="${pageContext.request.contextPath}/logout" class="btn btn-default btn-flat">注销</a>
                             </div>
                         </li>
                     </ul>

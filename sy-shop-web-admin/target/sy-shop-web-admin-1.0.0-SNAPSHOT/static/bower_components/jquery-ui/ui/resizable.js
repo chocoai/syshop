@@ -88,21 +88,21 @@ $.widget("ui.resizable", $.ui.mouse, {
 		var n, i, handle, axis, hname,
 			that = this,
 			o = this.options;
-		this.element.addClass("ui-resizable");
+		this.element.addClass("api-resizable");
 
 		$.extend(this, {
 			_aspectRatio: !!(o.aspectRatio),
 			aspectRatio: o.aspectRatio,
 			originalElement: this.element,
 			_proportionallyResizeElements: [],
-			_helper: o.helper || o.ghost || o.animate ? o.helper || "ui-resizable-helper" : null
+			_helper: o.helper || o.ghost || o.animate ? o.helper || "api-resizable-helper" : null
 		});
 
 		// Wrap the element if it cannot hold child nodes
 		if (this.element[0].nodeName.match(/^(canvas|textarea|input|select|button|img)$/i)) {
 
 			this.element.wrap(
-				$("<div class='ui-wrapper' style='overflow: hidden;'></div>").css({
+				$("<div class='api-wrapper' style='overflow: hidden;'></div>").css({
 					position: this.element.css("position"),
 					width: this.element.outerWidth(),
 					height: this.element.outerHeight(),
@@ -112,7 +112,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 			);
 
 			this.element = this.element.parent().data(
-				"ui-resizable", this.element.resizable( "instance" )
+				"api-resizable", this.element.resizable( "instance" )
 			);
 
 			this.elementIsWrapper = true;
@@ -148,16 +148,16 @@ $.widget("ui.resizable", $.ui.mouse, {
 		}
 
 		this.handles = o.handles ||
-			( !$(".ui-resizable-handle", this.element).length ?
+			( !$(".api-resizable-handle", this.element).length ?
 				"e,s,se" : {
-					n: ".ui-resizable-n",
-					e: ".ui-resizable-e",
-					s: ".ui-resizable-s",
-					w: ".ui-resizable-w",
-					se: ".ui-resizable-se",
-					sw: ".ui-resizable-sw",
-					ne: ".ui-resizable-ne",
-					nw: ".ui-resizable-nw"
+					n: ".api-resizable-n",
+					e: ".api-resizable-e",
+					s: ".api-resizable-s",
+					w: ".api-resizable-w",
+					se: ".api-resizable-se",
+					sw: ".api-resizable-sw",
+					ne: ".api-resizable-ne",
+					nw: ".api-resizable-nw"
 				} );
 
 		this._handles = $();
@@ -173,17 +173,17 @@ $.widget("ui.resizable", $.ui.mouse, {
 			for (i = 0; i < n.length; i++) {
 
 				handle = $.trim(n[i]);
-				hname = "ui-resizable-" + handle;
-				axis = $("<div class='ui-resizable-handle " + hname + "'></div>");
+				hname = "api-resizable-" + handle;
+				axis = $("<div class='api-resizable-handle " + hname + "'></div>");
 
 				axis.css({ zIndex: o.zIndex });
 
 				// TODO : What's going on here?
 				if ("se" === handle) {
-					axis.addClass("ui-icon ui-icon-gripsmall-diagonal-se");
+					axis.addClass("api-icon api-icon-gripsmall-diagonal-se");
 				}
 
-				this.handles[handle] = ".ui-resizable-" + handle;
+				this.handles[handle] = ".api-resizable-" + handle;
 				this.element.append(axis);
 			}
 
@@ -227,7 +227,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 		// TODO: make renderAxis a prototype function
 		this._renderAxis(this.element);
 
-		this._handles = this._handles.add( this.element.find( ".ui-resizable-handle" ) );
+		this._handles = this._handles.add( this.element.find( ".api-resizable-handle" ) );
 		this._handles.disableSelection();
 
 		this._handles.mouseover(function() {
@@ -271,11 +271,11 @@ $.widget("ui.resizable", $.ui.mouse, {
 		var wrapper,
 			_destroy = function(exp) {
 				$(exp)
-					.removeClass("ui-resizable ui-resizable-disabled ui-resizable-resizing")
+					.removeClass("ui-resizable ui-resizable-disabled api-resizable-resizing")
 					.removeData("resizable")
-					.removeData("ui-resizable")
+					.removeData("api-resizable")
 					.unbind(".resizable")
-					.find(".ui-resizable-handle")
+					.find(".api-resizable-handle")
 						.remove();
 			};
 
@@ -362,10 +362,10 @@ $.widget("ui.resizable", $.ui.mouse, {
 			o.aspectRatio :
 			((this.originalSize.width / this.originalSize.height) || 1);
 
-		cursor = $(".ui-resizable-" + this.axis).css("cursor");
+		cursor = $(".api-resizable-" + this.axis).css("cursor");
 		$("body").css("cursor", cursor === "auto" ? this.axis + "-resize" : cursor);
 
-		el.addClass("ui-resizable-resizing");
+		el.addClass("api-resizable-resizing");
 		this._propagate("start", event);
 		return true;
 	},
@@ -449,7 +449,7 @@ $.widget("ui.resizable", $.ui.mouse, {
 
 		$("body").css("cursor", "auto");
 
-		this.element.removeClass("ui-resizable-resizing");
+		this.element.removeClass("api-resizable-resizing");
 
 		this._propagate("stop", event);
 
@@ -987,7 +987,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 
 		$(o.alsoResize).each(function() {
 			var el = $(this);
-			el.data("ui-resizable-alsoresize", {
+			el.data("api-resizable-alsoresize", {
 				width: parseInt(el.width(), 10), height: parseInt(el.height(), 10),
 				left: parseInt(el.css("left"), 10), top: parseInt(el.css("top"), 10)
 			});
@@ -1007,7 +1007,7 @@ $.ui.plugin.add("resizable", "alsoResize", {
 			};
 
 			$(o.alsoResize).each(function() {
-				var el = $(this), start = $(this).data("ui-resizable-alsoresize"), style = {},
+				var el = $(this), start = $(this).data("api-resizable-alsoresize"), style = {},
 					css = el.parents(ui.originalElement[0]).length ?
 							[ "width", "height" ] :
 							[ "width", "height", "top", "left" ];
@@ -1046,7 +1046,7 @@ $.ui.plugin.add("resizable", "ghost", {
 				left: 0,
 				top: 0
 			})
-			.addClass("ui-resizable-ghost")
+			.addClass("api-resizable-ghost")
 			.addClass(typeof o.ghost === "string" ? o.ghost : "");
 
 		that.ghost.appendTo(that.helper);

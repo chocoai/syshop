@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.shop.web.api.dao.TbItemDao">
+
+
+    <sql id="content">
+        a.id,
+        a.title,
+        a.sell_point AS sellPoint,
+        a.price,
+        a.num,
+        a.barcode,
+        a.image,
+        a.cid,
+        a.status,
+        a.created,
+        a.updated
+    </sql>
+    <select id="selectTbItemByPages" resultType="TbItem">
+        SELECT
+        <include refid="content"/>
+        FROM
+        tb_item AS a
+        <where>
+         1=1
+          <if test="tbItem.title != null and tbItem.title != ''">
+          AND a.title LIKE CONCAT ('%',#{tbItem.title},'%')
+            OR a.sell_point LIKE CONCAT ('%',#{tbItem.title},'%')
+        </if>
+        </where>
+        AND a.status = 1
+         LIMIT #{start},#{limit}
+    </select>
+    <select id="getCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM tb_item as a
+        <where>
+            1=1
+            <if test="title != null and title != ''">
+                AND a.title LIKE CONCAT ('%',#{title},'%')
+                OR a.sell_point LIKE CONCAT ('%',#{title},'%')
+            </if>
+        </where>
+        AND a.status = 1
+    </select>
+
+    <select id="selectTbItemById" resultType="TbItem">
+        select
+        <include refid="content"/>
+        from tb_item AS a
+        WHERE a.id = #{id}
+    </select>
+
+</mapper>
+

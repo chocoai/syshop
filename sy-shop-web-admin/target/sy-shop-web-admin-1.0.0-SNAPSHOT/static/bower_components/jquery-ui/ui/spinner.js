@@ -43,8 +43,8 @@ return $.widget( "ui.spinner", {
 	options: {
 		culture: null,
 		icons: {
-			down: "ui-icon-triangle-1-s",
-			up: "ui-icon-triangle-1-n"
+			down: "api-icon-triangle-1-s",
+			up: "api-icon-triangle-1-n"
 		},
 		incremental: true,
 		max: null,
@@ -185,7 +185,7 @@ return $.widget( "ui.spinner", {
 		},
 		"mouseup .ui-spinner-button": "_stop",
 		"mouseenter .ui-spinner-button": function( event ) {
-			// button will add ui-state-active if mouse was down while mouseleave and kept down
+			// button will add api-state-active if mouse was down while mouseleave and kept down
 			if ( !$( event.currentTarget ).hasClass( "ui-state-active" ) ) {
 				return;
 			}
@@ -203,7 +203,7 @@ return $.widget( "ui.spinner", {
 
 	_draw: function() {
 		var uiSpinner = this.uiSpinner = this.element
-			.addClass( "ui-spinner-input" )
+			.addClass( "api-spinner-input" )
 			.attr( "autocomplete", "off" )
 			.wrap( this._uiSpinnerHtml() )
 			.parent()
@@ -213,10 +213,10 @@ return $.widget( "ui.spinner", {
 		this.element.attr( "role", "spinbutton" );
 
 		// button bindings
-		this.buttons = uiSpinner.find( ".ui-spinner-button" )
+		this.buttons = uiSpinner.find( ".api-spinner-button" )
 			.attr( "tabIndex", -1 )
 			.button()
-			.removeClass( "ui-corner-all" );
+			.removeClass( "api-corner-all" );
 
 		// IE 6 doesn't understand height: 50% for the buttons
 		// unless the wrapper has an explicit height
@@ -254,16 +254,16 @@ return $.widget( "ui.spinner", {
 	},
 
 	_uiSpinnerHtml: function() {
-		return "<span class='ui-spinner ui-widget ui-widget-content ui-corner-all'></span>";
+		return "<span class='api-spinner api-widget api-widget-content api-corner-all'></span>";
 	},
 
 	_buttonHtml: function() {
 		return "" +
-			"<a class='ui-spinner-button ui-spinner-up ui-corner-tr'>" +
-				"<span class='ui-icon " + this.options.icons.up + "'>&#9650;</span>" +
+			"<a class='api-spinner-button api-spinner-up api-corner-tr'>" +
+				"<span class='api-icon " + this.options.icons.up + "'>&#9650;</span>" +
 			"</a>" +
-			"<a class='ui-spinner-button ui-spinner-down ui-corner-br'>" +
-				"<span class='ui-icon " + this.options.icons.down + "'>&#9660;</span>" +
+			"<a class='api-spinner-button api-spinner-down api-corner-br'>" +
+				"<span class='api-icon " + this.options.icons.down + "'>&#9660;</span>" +
 			"</a>";
 	},
 
@@ -384,10 +384,10 @@ return $.widget( "ui.spinner", {
 			}
 		}
 		if ( key === "icons" ) {
-			this.buttons.first().find( ".ui-icon" )
+			this.buttons.first().find( ".api-icon" )
 				.removeClass( this.options.icons.up )
 				.addClass( value.up );
-			this.buttons.last().find( ".ui-icon" )
+			this.buttons.last().find( ".api-icon" )
 				.removeClass( this.options.icons.down )
 				.addClass( value.down );
 		}
@@ -461,7 +461,7 @@ return $.widget( "ui.spinner", {
 
 	_destroy: function() {
 		this.element
-			.removeClass( "ui-spinner-input" )
+			.removeClass( "api-spinner-input" )
 			.prop( "disabled", false )
 			.removeAttr( "autocomplete" )
 			.removeAttr( "role" )

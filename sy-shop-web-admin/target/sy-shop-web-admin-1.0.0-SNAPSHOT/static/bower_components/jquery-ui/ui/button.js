@@ -25,8 +25,8 @@
 }(function( $ ) {
 
 var lastActive,
-	baseClasses = "ui-button ui-widget ui-state-default ui-corner-all",
-	typeClasses = "ui-button-icons-only ui-button-icon-only ui-button-text-icons ui-button-text-icon-primary ui-button-text-icon-secondary ui-button-text-only",
+	baseClasses = "api-button api-widget api-state-default api-corner-all",
+	typeClasses = "api-button-icons-only api-button-icon-only api-button-text-icons api-button-text-icon-primary api-button-text-icon-secondary api-button-text-only",
 	formResetHandler = function() {
 		var form = $( this );
 		setTimeout(function() {
@@ -80,7 +80,7 @@ $.widget( "ui.button", {
 		var that = this,
 			options = this.options,
 			toggleButton = this.type === "checkbox" || this.type === "radio",
-			activeClass = !toggleButton ? "ui-state-active" : "";
+			activeClass = !toggleButton ? "api-state-active" : "";
 
 		if ( options.label === null ) {
 			options.label = (this.type === "input" ? this.buttonElement.val() : this.buttonElement.html());
@@ -113,13 +113,13 @@ $.widget( "ui.button", {
 			});
 
 		// Can't use _focusable() because the element that receives focus
-		// and the element that gets the ui-state-focus class are different
+		// and the element that gets the api-state-focus class are different
 		this._on({
 			focus: function() {
-				this.buttonElement.addClass( "ui-state-focus" );
+				this.buttonElement.addClass( "api-state-focus" );
 			},
 			blur: function() {
-				this.buttonElement.removeClass( "ui-state-focus" );
+				this.buttonElement.removeClass( "api-state-focus" );
 			}
 		});
 
@@ -149,7 +149,7 @@ $.widget( "ui.button", {
 					.map(function() {
 						return $( this ).button( "widget" )[ 0 ];
 					})
-					.removeClass( "ui-state-active" )
+					.removeClass( "api-state-active" )
 					.attr( "aria-pressed", "false" );
 			});
 		} else {
@@ -224,11 +224,11 @@ $.widget( "ui.button", {
 					this.buttonElement = ancestor.find( labelSelector );
 				}
 			}
-			this.element.addClass( "ui-helper-hidden-accessible" );
+			this.element.addClass( "api-helper-hidden-accessible" );
 
 			checked = this.element.is( ":checked" );
 			if ( checked ) {
-				this.buttonElement.addClass( "ui-state-active" );
+				this.buttonElement.addClass( "api-state-active" );
 			}
 			this.buttonElement.prop( "aria-pressed", checked );
 		} else {
@@ -242,12 +242,12 @@ $.widget( "ui.button", {
 
 	_destroy: function() {
 		this.element
-			.removeClass( "ui-helper-hidden-accessible" );
+			.removeClass( "api-helper-hidden-accessible" );
 		this.buttonElement
-			.removeClass( baseClasses + " ui-state-active " + typeClasses )
+			.removeClass( baseClasses + " api-state-active " + typeClasses )
 			.removeAttr( "role" )
 			.removeAttr( "aria-pressed" )
-			.html( this.buttonElement.find(".ui-button-text").html() );
+			.html( this.buttonElement.find(".api-button-text").html() );
 
 		if ( !this.hasTitle ) {
 			this.buttonElement.removeAttr( "title" );
@@ -261,9 +261,9 @@ $.widget( "ui.button", {
 			this.element.prop( "disabled", !!value );
 			if ( value ) {
 				if ( this.type === "checkbox" || this.type === "radio" ) {
-					this.buttonElement.removeClass( "ui-state-focus" );
+					this.buttonElement.removeClass( "api-state-focus" );
 				} else {
-					this.buttonElement.removeClass( "ui-state-focus ui-state-active" );
+					this.buttonElement.removeClass( "api-state-focus api-state-active" );
 				}
 			}
 			return;
@@ -273,7 +273,7 @@ $.widget( "ui.button", {
 
 	refresh: function() {
 		//See #8237 & #8828
-		var isDisabled = this.element.is( "input, button" ) ? this.element.is( ":disabled" ) : this.element.hasClass( "ui-button-disabled" );
+		var isDisabled = this.element.is( "input, button" ) ? this.element.is( ":disabled" ) : this.element.hasClass( "api-button-disabled" );
 
 		if ( isDisabled !== this.options.disabled ) {
 			this._setOption( "disabled", isDisabled );
@@ -293,11 +293,11 @@ $.widget( "ui.button", {
 		} else if ( this.type === "checkbox" ) {
 			if ( this.element.is( ":checked" ) ) {
 				this.buttonElement
-					.addClass( "ui-state-active" )
+					.addClass( "api-state-active" )
 					.attr( "aria-pressed", "true" );
 			} else {
 				this.buttonElement
-					.removeClass( "ui-state-active" )
+					.removeClass( "api-state-active" )
 					.attr( "aria-pressed", "false" );
 			}
 		}
@@ -322,26 +322,26 @@ $.widget( "ui.button", {
 
 		if ( icons.primary || icons.secondary ) {
 			if ( this.options.text ) {
-				buttonClasses.push( "ui-button-text-icon" + ( multipleIcons ? "s" : ( icons.primary ? "-primary" : "-secondary" ) ) );
+				buttonClasses.push( "api-button-text-icon" + ( multipleIcons ? "s" : ( icons.primary ? "-primary" : "-secondary" ) ) );
 			}
 
 			if ( icons.primary ) {
-				buttonElement.prepend( "<span class='ui-button-icon-primary ui-icon " + icons.primary + "'></span>" );
+				buttonElement.prepend( "<span class='api-button-icon-primary api-icon " + icons.primary + "'></span>" );
 			}
 
 			if ( icons.secondary ) {
-				buttonElement.append( "<span class='ui-button-icon-secondary ui-icon " + icons.secondary + "'></span>" );
+				buttonElement.append( "<span class='api-button-icon-secondary api-icon " + icons.secondary + "'></span>" );
 			}
 
 			if ( !this.options.text ) {
-				buttonClasses.push( multipleIcons ? "ui-button-icons-only" : "ui-button-icon-only" );
+				buttonClasses.push( multipleIcons ? "api-button-icons-only" : "api-button-icon-only" );
 
 				if ( !this.hasTitle ) {
 					buttonElement.attr( "title", $.trim( buttonText ) );
 				}
 			}
 		} else {
-			buttonClasses.push( "ui-button-text-only" );
+			buttonClasses.push( "api-button-text-only" );
 		}
 		buttonElement.addClass( buttonClasses.join( " " ) );
 	}
@@ -350,11 +350,11 @@ $.widget( "ui.button", {
 $.widget( "ui.buttonset", {
 	version: "1.11.4",
 	options: {
-		items: "button, input[type=button], input[type=submit], input[type=reset], input[type=checkbox], input[type=radio], a, :data(ui-button)"
+		items: "button, input[type=button], input[type=submit], input[type=reset], input[type=checkbox], input[type=radio], a, :data(api-button)"
 	},
 
 	_create: function() {
-		this.element.addClass( "ui-buttonset" );
+		this.element.addClass( "api-buttonset" );
 	},
 
 	_init: function() {
@@ -384,23 +384,23 @@ $.widget( "ui.buttonset", {
 			.map(function() {
 				return $( this ).button( "widget" )[ 0 ];
 			})
-				.removeClass( "ui-corner-all ui-corner-left ui-corner-right" )
+				.removeClass( "api-corner-all api-corner-left api-corner-right" )
 				.filter( ":first" )
-					.addClass( rtl ? "ui-corner-right" : "ui-corner-left" )
+					.addClass( rtl ? "api-corner-right" : "api-corner-left" )
 				.end()
 				.filter( ":last" )
-					.addClass( rtl ? "ui-corner-left" : "ui-corner-right" )
+					.addClass( rtl ? "api-corner-left" : "api-corner-right" )
 				.end()
 			.end();
 	},
 
 	_destroy: function() {
-		this.element.removeClass( "ui-buttonset" );
+		this.element.removeClass( "api-buttonset" );
 		this.buttons
 			.map(function() {
 				return $( this ).button( "widget" )[ 0 ];
 			})
-				.removeClass( "ui-corner-left ui-corner-right" )
+				.removeClass( "api-corner-left api-corner-right" )
 			.end()
 			.button( "destroy" );
 	}

@@ -8,7 +8,7 @@
 
     <title>我的商城 | 后台管理</title>
     <jsp:include page="../includes/header.jsp"/>
-    <link rel="stylesheet" href="/static/plugins/jquery-ztree/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/jquery-ztree/css/zTreeStyle/zTreeStyle.css"/>
    </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -99,7 +99,7 @@
 </div>
 <!-- ./wrapper -->
 <jsp:include page="../includes/footer.jsp"/>
-<script src="/static/plugins/jquery-ztree/js/jquery.ztree.core-3.5.js"></script>
+<script src="${pageContext.request.contextPath}/static/plugins/jquery-ztree/js/jquery.ztree.core-3.5.js"></script>
 <script>
 
     var setting = {
@@ -108,7 +108,7 @@
         },
         async: {
             enable: true,
-            url:"/category/detail",
+            url:"${pageContext.request.contextPath}/category/detail",
             autoParam:["id"]
         }
     };

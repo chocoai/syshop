@@ -55,7 +55,7 @@
                         <!-- /.box-header -->
                         <!-- form start -->
                         <%--<form class="form-horizontal" action="/user/save" method="post">--%>
-                        <form:form cssClass="form-horizontal" action="/user/save" method="post" modelAttribute="tbUser">
+                        <form:form cssClass="form-horizontal" action="${pageContext.request.contextPath}/user/save" method="post" modelAttribute="tbUser">
                             <form:hidden path="id"/>
                             <div class="box-body">
                                 <div class="form-group">

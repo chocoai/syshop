@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sy.shop.web.api.dao.TbUserAddressDao">
+    <sql id="content">
+        a.id,
+        a.receiver_name AS receiverName,
+        a.receiver_phone AS receiverPhone,
+        a.receiver_mobile AS receiverMobile,
+        a.receiver_state AS receiverState,
+        a.receiver_city AS receiverCity,
+        a.receiver_district AS receiverDistrict,
+        a.receiver_address AS receiverAddress,
+        a.receiver_zip AS receiverZip,
+        a.user_id AS userId,
+        a.status,
+        a.created,
+        a.updated
+    </sql>
+<!--查询全部条数-->
+    <select id="selectAddress" resultType="TbUserAddress">
+       SELECT
+              <include refid="content"/>
+       FROM tb_user_address AS a
+      WHERE a.user_id = #{id}
+    </select>
+
+    <select id="selectAddressByUserId" resultType="TbUserAddress">
+        SELECT
+        <include refid="content"/>
+        FROM tb_user_address AS a
+WHERE a.status = 1 AND a.user_id = #{id}
+    </select>
+</mapper>
+

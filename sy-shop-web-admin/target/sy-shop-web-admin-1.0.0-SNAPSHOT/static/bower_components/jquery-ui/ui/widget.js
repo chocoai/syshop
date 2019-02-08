@@ -310,8 +310,8 @@ $.Widget.prototype = {
 
 		// clean up events and states
 		this.bindings.unbind( this.eventNamespace );
-		this.hoverable.removeClass( "ui-state-hover" );
-		this.focusable.removeClass( "ui-state-focus" );
+		this.hoverable.removeClass( "api-state-hover" );
+		this.focusable.removeClass( "api-state-focus" );
 	},
 	_destroy: $.noop,
 
@@ -376,8 +376,8 @@ $.Widget.prototype = {
 
 			// If the widget is becoming disabled, then nothing is interactive
 			if ( value ) {
-				this.hoverable.removeClass( "ui-state-hover" );
-				this.focusable.removeClass( "ui-state-focus" );
+				this.hoverable.removeClass( "api-state-hover" );
+				this.focusable.removeClass( "api-state-focus" );
 			}
 		}
 

@@ -74,8 +74,8 @@ return $.widget( "ui.tabs", {
 		this.running = false;
 
 		this.element
-			.addClass( "ui-tabs ui-widget ui-widget-content ui-corner-all" )
-			.toggleClass( "ui-tabs-collapsible", options.collapsible );
+			.addClass( "api-tabs api-widget api-widget-content api-corner-all" )
+			.toggleClass( "api-tabs-collapsible", options.collapsible );
 
 		this._processTabs();
 		options.active = this._initialActive();
@@ -282,7 +282,7 @@ return $.widget( "ui.tabs", {
 		this._super( key, value);
 
 		if ( key === "collapsible" ) {
-			this.element.toggleClass( "ui-tabs-collapsible", value );
+			this.element.toggleClass( "api-tabs-collapsible", value );
 			// Setting collapsible: false while collapsed; open first panel
 			if ( !value && this.options.active === false ) {
 				this._activate( 0 );
@@ -358,7 +358,7 @@ return $.widget( "ui.tabs", {
 			this.tabs.eq( 0 ).attr( "tabIndex", 0 );
 		} else {
 			this.active
-				.addClass( "ui-tabs-active ui-state-active" )
+				.addClass( "api-tabs-active api-state-active" )
 				.attr({
 					"aria-selected": "true",
 					"aria-expanded": "true",
@@ -379,7 +379,7 @@ return $.widget( "ui.tabs", {
 			prevPanels = this.panels;
 
 		this.tablist = this._getList()
-			.addClass( "ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" )
+			.addClass( "api-tabs-nav api-helper-reset api-helper-clearfix api-widget-header api-corner-all" )
 			.attr( "role", "tablist" )
 
 			// Prevent users from focusing disabled tabs via click
@@ -395,14 +395,14 @@ return $.widget( "ui.tabs", {
 			// We don't have to worry about focusing the previously focused
 			// element since clicking on a non-focusable element should focus
 			// the body anyway.
-			.delegate( ".ui-tabs-anchor", "focus" + this.eventNamespace, function() {
+			.delegate( ".api-tabs-anchor", "focus" + this.eventNamespace, function() {
 				if ( $( this ).closest( "li" ).is( ".ui-state-disabled" ) ) {
 					this.blur();
 				}
 			});
 
 		this.tabs = this.tablist.find( "> li:has(a[href])" )
-			.addClass( "ui-state-default ui-corner-top" )
+			.addClass( "api-state-default api-corner-top" )
 			.attr({
 				role: "tab",
 				tabIndex: -1
@@ -411,7 +411,7 @@ return $.widget( "ui.tabs", {
 		this.anchors = this.tabs.map(function() {
 				return $( "a", this )[ 0 ];
 			})
-			.addClass( "ui-tabs-anchor" )
+			.addClass( "api-tabs-anchor" )
 			.attr({
 				role: "presentation",
 				tabIndex: -1
@@ -448,7 +448,7 @@ return $.widget( "ui.tabs", {
 				that.panels = that.panels.add( panel );
 			}
 			if ( originalAriaControls ) {
-				tab.data( "ui-tabs-aria-controls", originalAriaControls );
+				tab.data( "api-tabs-aria-controls", originalAriaControls );
 			}
 			tab.attr({
 				"aria-controls": panelId,
@@ -458,7 +458,7 @@ return $.widget( "ui.tabs", {
 		});
 
 		this.panels
-			.addClass( "ui-tabs-panel ui-widget-content ui-corner-bottom" )
+			.addClass( "api-tabs-panel api-widget-content api-corner-bottom" )
 			.attr( "role", "tabpanel" );
 
 		// Avoid memory leaks (#10056)
@@ -478,7 +478,7 @@ return $.widget( "ui.tabs", {
 		return $( "<div>" )
 			.attr( "id", id )
 			.addClass( "ui-tabs-panel ui-widget-content ui-corner-bottom" )
-			.data( "ui-tabs-destroy", true );
+			.data( "api-tabs-destroy", true );
 	},
 
 	_setupDisabled: function( disabled ) {
@@ -584,7 +584,7 @@ return $.widget( "ui.tabs", {
 
 		if ( tab.hasClass( "ui-state-disabled" ) ||
 				// tab is already loading
-				tab.hasClass( "ui-tabs-loading" ) ||
+				tab.hasClass( "api-tabs-loading" ) ||
 				// can't switch durning an animation
 				this.running ||
 				// click on active header, but not collapsible
@@ -625,7 +625,7 @@ return $.widget( "ui.tabs", {
 		}
 
 		function show() {
-			eventData.newTab.closest( "li" ).addClass( "ui-tabs-active ui-state-active" );
+			eventData.newTab.closest( "li" ).addClass( "api-tabs-active api-state-active" );
 
 			if ( toShow.length && that.options.show ) {
 				that._show( toShow, that.options.show, complete );
@@ -638,11 +638,11 @@ return $.widget( "ui.tabs", {
 		// start out by hiding, then showing, then completing
 		if ( toHide.length && this.options.hide ) {
 			this._hide( toHide, this.options.hide, function() {
-				eventData.oldTab.closest( "li" ).removeClass( "ui-tabs-active ui-state-active" );
+				eventData.oldTab.closest( "li" ).removeClass( "api-tabs-active api-state-active" );
 				show();
 			});
 		} else {
-			eventData.oldTab.closest( "li" ).removeClass( "ui-tabs-active ui-state-active" );
+			eventData.oldTab.closest( "li" ).removeClass( "api-tabs-active api-state-active" );
 			toHide.hide();
 			show();
 		}
@@ -686,7 +686,7 @@ return $.widget( "ui.tabs", {
 			active = this.active;
 		}
 
-		anchor = active.find( ".ui-tabs-anchor" )[ 0 ];
+		anchor = active.find( ".api-tabs-anchor" )[ 0 ];
 		this._eventHandler({
 			target: anchor,
 			currentTarget: anchor,
@@ -712,14 +712,14 @@ return $.widget( "ui.tabs", {
 			this.xhr.abort();
 		}
 
-		this.element.removeClass( "ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible" );
+		this.element.removeClass( "api-tabs api-widget api-widget-content api-corner-all api-tabs-collapsible" );
 
 		this.tablist
-			.removeClass( "ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" )
+			.removeClass( "api-tabs-nav api-helper-reset api-helper-clearfix api-widget-header api-corner-all" )
 			.removeAttr( "role" );
 
 		this.anchors
-			.removeClass( "ui-tabs-anchor" )
+			.removeClass( "api-tabs-anchor" )
 			.removeAttr( "role" )
 			.removeAttr( "tabIndex" )
 			.removeUniqueId();
@@ -727,12 +727,12 @@ return $.widget( "ui.tabs", {
 		this.tablist.unbind( this.eventNamespace );
 
 		this.tabs.add( this.panels ).each(function() {
-			if ( $.data( this, "ui-tabs-destroy" ) ) {
+			if ( $.data( this, "api-tabs-destroy" ) ) {
 				$( this ).remove();
 			} else {
 				$( this )
-					.removeClass( "ui-state-default ui-state-active ui-state-disabled " +
-						"ui-corner-top ui-corner-bottom ui-widget-content ui-tabs-active ui-tabs-panel" )
+					.removeClass( "api-state-default api-state-active api-state-disabled " +
+						"api-corner-top api-corner-bottom api-widget-content api-tabs-active api-tabs-panel" )
 					.removeAttr( "tabIndex" )
 					.removeAttr( "aria-live" )
 					.removeAttr( "aria-busy" )
@@ -746,11 +746,11 @@ return $.widget( "ui.tabs", {
 
 		this.tabs.each(function() {
 			var li = $( this ),
-				prev = li.data( "ui-tabs-aria-controls" );
+				prev = li.data( "api-tabs-aria-controls" );
 			if ( prev ) {
 				li
 					.attr( "aria-controls", prev )
-					.removeData( "ui-tabs-aria-controls" );
+					.removeData( "api-tabs-aria-controls" );
 			} else {
 				li.removeAttr( "aria-controls" );
 			}
@@ -812,7 +812,7 @@ return $.widget( "ui.tabs", {
 		index = this._getIndex( index );
 		var that = this,
 			tab = this.tabs.eq( index ),
-			anchor = tab.find( ".ui-tabs-anchor" ),
+			anchor = tab.find( ".api-tabs-anchor" ),
 			panel = this._getPanelForTab( tab ),
 			eventData = {
 				tab: tab,
@@ -823,7 +823,7 @@ return $.widget( "ui.tabs", {
 					that.panels.stop( false, true );
 				}
 
-				tab.removeClass( "ui-tabs-loading" );
+				tab.removeClass( "api-tabs-loading" );
 				panel.removeAttr( "aria-busy" );
 
 				if ( jqXHR === that.xhr ) {
@@ -842,7 +842,7 @@ return $.widget( "ui.tabs", {
 		// jQuery <1.8 returns false if the request is canceled in beforeSend,
 		// but as of 1.8, $.ajax() always returns a jqXHR object.
 		if ( this.xhr && this.xhr.statusText !== "canceled" ) {
-			tab.addClass( "ui-tabs-loading" );
+			tab.addClass( "api-tabs-loading" );
 			panel.attr( "aria-busy", "true" );
 
 			this.xhr

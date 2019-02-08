@@ -1412,7 +1412,7 @@ function image(name) {
  *
  * Options:
  *
- *   - `ui` name "bdd", "tdd", "exports" etc
+ *   - `api` name "bdd", "tdd", "exports" etc
  *   - `reporter` reporter instance, defaults to `mocha.reporters.Dot`
  *   - `globals` array of accepted globals
  *   - `timeout` timeout in milliseconds
@@ -5720,7 +5720,7 @@ var Mocha = global.Mocha = require('mocha'),
     mocha = global.mocha = new Mocha({ reporter: 'html' });
 
 // The BDD UI is registered by default, but no UI will be functional in the
-// browser without an explicit call to the overridden `mocha.ui` (see below).
+// browser without an explicit call to the overridden `mocha.api` (see below).
 // Ensure that this default UI does not expose its methods to the global scope.
 mocha.suite.removeAllListeners('pre-require');
 
@@ -5763,7 +5763,7 @@ mocha.throwError = function(err) {
 };
 
 /**
- * Override ui to ensure that the ui functions are initialized.
+ * Override api to ensure that the api functions are initialized.
  * Normally this would happen in Mocha.prototype.loadFiles.
  */
 

@@ -8,10 +8,10 @@
 
     <title>我的商城 | 后台管理</title>
     <jsp:include page="../includes/header.jsp"/>
-    <link rel="stylesheet" href="/static/plugins/jquery-ztree/css/zTreeStyle/zTreeStyle.css"/>
-    <link rel="stylesheet" href="/static/plugins/wangEditor/wangEditor.min.css" />
-    <link rel="stylesheet" href="/static/plugins/dropzone/min/dropzone.min.css"/>
-    <link rel="stylesheet" href="/static/plugins/dropzone/min/basic.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/jquery-ztree/css/zTreeStyle/zTreeStyle.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/wangEditor/wangEditor.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/dropzone/min/dropzone.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/plugins/dropzone/min/basic.min.css"/>
    </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -53,7 +53,7 @@
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
-                        <form:form cssClass="form-horizontal" action="/content/save" method="post" modelAttribute="tbContent">
+                        <form:form cssClass="form-horizontal" action="${pageContext.request.contextPath}/content/save" method="post" modelAttribute="tbContent">
                             <div class="box-body">
                                 <div class="form-group">
                                     <form:hidden path="id"/>
@@ -134,9 +134,9 @@
 </div>
 <!-- ./wrapper -->
 <jsp:include page="../includes/footer.jsp"/>
-<script src="/static/plugins/jquery-ztree/js/jquery.ztree.core-3.5.js"></script>
-<script src="/static/plugins/wangEditor/wangEditor.min.js"></script>
-<script src="/static/plugins/dropzone/min/dropzone.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/plugins/jquery-ztree/js/jquery.ztree.core-3.5.js"></script>
+<script src="${pageContext.request.contextPath}/static/plugins/wangEditor/wangEditor.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/plugins/dropzone/min/dropzone.min.js"></script>
 <script>
 
     var setting = {
@@ -145,7 +145,7 @@
         },
         async: {
             enable: true,
-            url:"/category/detail",
+            url:"${pageContext.request.contextPath}/category/detail",
             autoParam:["id"]
         }
     };
@@ -185,7 +185,7 @@
     }
     //图片上传
     new Dropzone("#dropz1", {
-        url: "/upload",
+        url: "${pageContext.request.contextPath}/upload",
         method: "post",
         acceptedFiles: ".jpg,.gif,.png,.jpeg", // 上传的类型
         dictDefaultMessage: '拖动文件至此或者点击上传', // 设置默认的提示语句
@@ -204,7 +204,7 @@
         }
     });
     new Dropzone("#dropz2", {
-        url: "/upload",
+        url: "${pageContext.request.contextPath}/upload",
         method: "post",
         acceptedFiles: ".jpg,.gif,.png,.jpeg", // 上传的类型
         dictDefaultMessage: '拖动文件至此或者点击上传', // 设置默认的提示语句

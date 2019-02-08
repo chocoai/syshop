@@ -86,7 +86,7 @@ public class HttpClientUtils {
                 httpPost.setHeader("Connection", HTTP_CLIENT_CONNECTION);
                 httpPost.setHeader("Cookie", cookie);
                 httpPost.setHeader("User_Agent", HTTP_CLIENT_USER_AGENT);
-                httpPost.setEntity(new UrlEncodedFormEntity(Arrays.asList(params)));
+                httpPost.setEntity(new UrlEncodedFormEntity(Arrays.asList(params),"UTF-8"));
                 httpResponse = httpClient.execute(httpPost);
             }
             HttpEntity entity = httpResponse.getEntity();

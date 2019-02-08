@@ -24,7 +24,7 @@ $(function(){
 				})
 				//自动播放
 				var i=0;
-				var t=setInterval(move,1500);
+				var t=setInterval(move,3000);
 				//自动播放核心函数
 				function move(){
 					i++;

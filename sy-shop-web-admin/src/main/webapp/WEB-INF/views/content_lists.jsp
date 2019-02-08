@@ -56,9 +56,9 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12" style="padding-left: 25px">
-                                <a href="/content/form" type="button" class="btn btn-sm btn-default"><i
+                                <a href="${pageContext.request.contextPath}/content/form" type="button" class="btn btn-sm btn-default"><i
                                         class="fa fa-plus"></i> 新增</a>&nbsp;&nbsp;
-                                <a type="button" onclick="App.deleteItems('/content/deletemulti')" class="btn btn-sm btn-default"><i
+                                <a type="button" onclick="App.deleteItems('${pageContext.request.contextPath}/content/deletemulti')" class="btn btn-sm btn-default"><i
                                         class="fa fa-trash"></i> 删除</a>&nbsp;&nbsp;
                                 <a type="button" class="btn btn-sm btn-default"><i class="fa fa-download"></i> 导入</a>&nbsp;&nbsp;
                                 <a type="button" class="btn btn-sm btn-default"><i class="fa fa-upload"></i> 导出</a>
@@ -138,7 +138,7 @@
 
 
 <jsp:include page="../includes/footer.jsp"/>
-<script src="/static/js/app/App.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/app/App.js"></script>
 
 <script>
     var columns = [

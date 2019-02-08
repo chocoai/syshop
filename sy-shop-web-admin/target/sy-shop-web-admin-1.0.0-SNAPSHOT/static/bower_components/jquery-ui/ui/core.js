@@ -20,7 +20,7 @@
 	}
 }(function( $ ) {
 
-// $.ui might exist from components with no dependencies, e.g., $.ui.position
+// $.api might exist from components with no dependencies, e.g., $.api.position
 $.ui = $.ui || {};
 
 $.extend( $.ui, {
@@ -69,7 +69,7 @@ $.fn.extend({
 		return function() {
 			return this.each(function() {
 				if ( !this.id ) {
-					this.id = "ui-id-" + ( ++uuid );
+					this.id = "api-id-" + ( ++uuid );
 				}
 			});
 		};
@@ -231,14 +231,14 @@ $.fn.extend({
 			"mousedown";
 
 		return function() {
-			return this.bind( eventType + ".ui-disableSelection", function( event ) {
+			return this.bind( eventType + ".api-disableSelection", function( event ) {
 				event.preventDefault();
 			});
 		};
 	})(),
 
 	enableSelection: function() {
-		return this.unbind( ".ui-disableSelection" );
+		return this.unbind( ".api-disableSelection" );
 	},
 
 	zIndex: function( zIndex ) {
@@ -271,7 +271,7 @@ $.fn.extend({
 	}
 });
 
-// $.ui.plugin is deprecated. Use $.widget() extensions instead.
+// $.api.plugin is deprecated. Use $.widget() extensions instead.
 $.ui.plugin = {
 	add: function( module, option, set ) {
 		var i,

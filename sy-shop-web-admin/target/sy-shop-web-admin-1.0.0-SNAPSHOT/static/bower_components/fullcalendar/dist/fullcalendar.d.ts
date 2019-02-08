@@ -1466,7 +1466,7 @@ declare module 'fullcalendar/src/types/input-types' {
 	        [name: string]: CustomButtonInput;
 	    };
 	    buttonIcons?: boolean | ButtonIconsInput;
-	    themeSystem?: 'standard' | 'bootstrap3' | 'jquery-ui';
+	    themeSystem?: 'standard' | 'bootstrap3' | 'jquery-api';
 	    themeButtonIcons?: boolean | ButtonIconsInput;
 	    bootstrapGlyphicons?: boolean | ButtonIconsInput;
 	    firstDay?: number;

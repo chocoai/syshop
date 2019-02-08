@@ -2657,7 +2657,7 @@ exports.globalDefaults = {
     allDayText: 'all-day',
     // allows setting a min-height to the event segment to prevent short events overlapping each other
     agendaEventMinHeight: 0,
-    // jquery-ui theming
+    // jquery-api theming
     theme: false,
     // themeButtonIcons: null,
     // eventResizableFromStart: false,
@@ -8301,38 +8301,38 @@ var JqueryUiTheme = /** @class */ (function (_super) {
 }(Theme_1.default));
 exports.default = JqueryUiTheme;
 JqueryUiTheme.prototype.classes = {
-    widget: 'ui-widget',
-    widgetHeader: 'ui-widget-header',
-    widgetContent: 'ui-widget-content',
+    widget: 'api-widget',
+    widgetHeader: 'api-widget-header',
+    widgetContent: 'api-widget-content',
     buttonGroup: 'fc-button-group',
-    button: 'ui-button',
-    cornerLeft: 'ui-corner-left',
-    cornerRight: 'ui-corner-right',
-    stateDefault: 'ui-state-default',
-    stateActive: 'ui-state-active',
+    button: 'api-button',
+    cornerLeft: 'api-corner-left',
+    cornerRight: 'api-corner-right',
+    stateDefault: 'api-state-default',
+    stateActive: 'api-state-active',
     stateDisabled: 'ui-state-disabled',
-    stateHover: 'ui-state-hover',
-    stateDown: 'ui-state-down',
-    today: 'ui-state-highlight',
-    popoverHeader: 'ui-widget-header',
-    popoverContent: 'ui-widget-content',
+    stateHover: 'api-state-hover',
+    stateDown: 'api-state-down',
+    today: 'api-state-highlight',
+    popoverHeader: 'api-widget-header',
+    popoverContent: 'api-widget-content',
     // day grid
-    headerRow: 'ui-widget-header',
-    dayRow: 'ui-widget-content',
+    headerRow: 'api-widget-header',
+    dayRow: 'api-widget-content',
     // list view
-    listView: 'ui-widget-content'
+    listView: 'api-widget-content'
 };
-JqueryUiTheme.prototype.baseIconClass = 'ui-icon';
+JqueryUiTheme.prototype.baseIconClass = 'api-icon';
 JqueryUiTheme.prototype.iconClasses = {
-    close: 'ui-icon-closethick',
-    prev: 'ui-icon-circle-triangle-w',
-    next: 'ui-icon-circle-triangle-e',
-    prevYear: 'ui-icon-seek-prev',
-    nextYear: 'ui-icon-seek-next'
+    close: 'api-icon-closethick',
+    prev: 'api-icon-circle-triangle-w',
+    next: 'api-icon-circle-triangle-e',
+    prevYear: 'api-icon-seek-prev',
+    nextYear: 'api-icon-seek-next'
 };
 JqueryUiTheme.prototype.iconOverrideOption = 'themeButtonIcons';
 JqueryUiTheme.prototype.iconOverrideCustomButtonOption = 'themeIcon';
-JqueryUiTheme.prototype.iconOverridePrefix = 'ui-icon-';
+JqueryUiTheme.prototype.iconOverridePrefix = 'api-icon-';
 
 
 /***/ }),
@@ -14789,7 +14789,7 @@ var StandardTheme_1 = __webpack_require__(213);
 var JqueryUiTheme_1 = __webpack_require__(214);
 var BootstrapTheme_1 = __webpack_require__(258);
 ThemeRegistry_1.defineThemeSystem('standard', StandardTheme_1.default);
-ThemeRegistry_1.defineThemeSystem('jquery-ui', JqueryUiTheme_1.default);
+ThemeRegistry_1.defineThemeSystem('jquery-api', JqueryUiTheme_1.default);
 ThemeRegistry_1.defineThemeSystem('bootstrap3', BootstrapTheme_1.default);
 
 
